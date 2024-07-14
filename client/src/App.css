@@ -3,13 +3,42 @@
   height: auto;
   display: flex;
   align-items: center;
-  padding-top: 40px;
   flex-direction: column;
 }
 
 body{
   margin: 0;
   padding: 0;
+}
+
+.navbar{
+  background-color: dodgerblue;
+  color: white;
+  display: flex;
+  justify-content:space-around;
+  width: 100vw;
+  margin-top: 0;
+  padding: 10px;
+  text-decoration:none;
+}
+
+.postPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.leftSide {
+  padding: 20px;
+  padding-left: 100px;
+  box-sizing: border-box;
+
+}
+
+.rightSide {
+  padding-top: 200px;
+  padding-right: 200px;
 }
 
 .post{

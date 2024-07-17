@@ -20,7 +20,6 @@ function CreatePost() {
 
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/posts", data).then((response) => {
-      console.log("IT WORKED");
       navigate("/")
     });
   };

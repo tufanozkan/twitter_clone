@@ -1,10 +1,9 @@
-import React from 'react'
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from 'axios';
+import axios from "axios";
 
 function Registration() {
-
   const initialValues = {
     username: "",
     password: "",
@@ -32,26 +31,27 @@ function Registration() {
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
           <Field
-            autoComplete="off"
+            autocomplete="off"
             id="inputCreatePost"
             name="username"
             placeholder="(Ex. John123...)"
           />
+
           <label>Password: </label>
           <ErrorMessage name="password" component="span" />
           <Field
-            autoComplete="off"
+            autocomplete="off"
             type="password"
             id="inputCreatePost"
             name="password"
-            placeholder="Your Password.."
+            placeholder="Your Password..."
           />
 
-          <button type="submit">Register</button>
+          <button type="submit"> Register</button>
         </Form>
       </Formik>
     </div>
-  )
+  );
 }
 
-export default Registration
+export default Registration;

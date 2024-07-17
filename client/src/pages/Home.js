@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 function Home() {
 
     const [listOfPosts, setListOfPosts] = useState([]);
-
     let navigate= useNavigate();
 
     useEffect(()=>{
@@ -19,7 +18,10 @@ function Home() {
     <div>
       {listOfPosts.map((value,key)=>{
       return (
-        <div key={key} className='post' onClick={() => { 
+        <div
+            key={key}
+            className="post"
+            onClick={() => {
           navigate(`/post/${value.id}`);
         }}>
           <div className='title'>{value.title}</div>

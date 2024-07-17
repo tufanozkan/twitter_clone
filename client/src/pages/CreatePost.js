@@ -24,6 +24,7 @@ function CreatePost() {
       navigate("/")
     });
   };
+  
   return (
     <div className="createPostPage">
       <Formik

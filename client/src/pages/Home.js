@@ -14,12 +14,13 @@ function Home() {
         headers: { accessToken: sessionStorage.getItem("accessToken") },
       })
       .then((response) => {
-        setListOfPosts(response.data.listOfPosts);
-        setLikedPosts(
-          response.data.likedPosts.map((like) => {
-            return like.PostId;
-          })
-        );
+        console.log("Response data:", response.data);
+        if (response.data.listOfPosts && response.data.likedPosts) {
+          setListOfPosts(response.data.listOfPosts);
+          setLikedPosts(response.data.likedPosts.map((like) => like.PostId));
+        } else {
+          console.error("Response data does not contain expected properties.");
+        }
       })
       .catch((error) => {
         console.error("There was an error fetching the posts!", error);
@@ -50,11 +51,7 @@ function Home() {
           })
         );
         if (likedPosts.includes(postId)) {
-          setLikedPosts(
-            likedPosts.filter((id) => {
-              return id != postId;
-            })
-          );
+          setLikedPosts(likedPosts.filter((id) => id !== postId));
         } else {
           setLikedPosts([...likedPosts, postId]);
         }
@@ -66,35 +63,31 @@ function Home() {
 
   return (
     <div>
-      {listOfPosts.map((value, key) => {
-        return (
-          <div key={key} className="post">
-            <div className="title">{value.title}</div>
-            <div
-              className="body"
-              onClick={() => {
-                navigate(`/post/${value.id}`);
-              }}
-            >
-              {value.postText}
-            </div>
-            <div className="footer">
-              <div className="username">{value.username}</div>
-              <div className="buttons">
-                <ThumbUpIcon
-                  onClick={() => {
-                    likeAPost(value.id);
-                  }}
-                  className={
-                    likedPosts.includes(value.id) ? "unlikeBttn" : "likeBttn"
-                  }
-                />
-              </div>
-              <label>{value.Likes.length}</label>
-            </div>
+      {listOfPosts.map((value, key) => (
+        <div key={key} className="post">
+          <div className="title">{value.title}</div>
+          <div
+            className="body"
+            onClick={() => {
+              navigate(`/post/${value.id}`);
+            }}
+          >
+            {value.postText}
           </div>
-        );
-      })}
+          <div className="footer">
+            <div className="username">{value.username}</div>
+            <div className="buttons">
+              <ThumbUpIcon
+                onClick={() => likeAPost(value.id)}
+                className={
+                  likedPosts.includes(value.id) ? "unlikeBttn" : "likeBttn"
+                }
+              />
+            </div>
+            <label>{value.Likes.length}</label>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

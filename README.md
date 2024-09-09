@@ -5,9 +5,7 @@ This project is a **Twitter clone** built using modern web technologies. It mimi
 ## Features
 - User authentication (Login/Signup)
 - Create, edit, and delete tweets
-- Follow and unfollow users
 - Real-time updates in the tweet feed
-- Responsive design for mobile and desktop users
 
 ## Technologies Used
 - **Frontend**: React.js
@@ -15,7 +13,6 @@ This project is a **Twitter clone** built using modern web technologies. It mimi
 - **Database**: MongoDB
 - **Authentication**: JWT (JSON Web Tokens)
 - **API**: REST API architecture
-- **Styling**: TailwindCSS
 
 ## Installation and Setup
 Follow the steps below to get this project running on your local machine:
